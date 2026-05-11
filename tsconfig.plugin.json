@@ -9,6 +9,6 @@
     "typeRoots": [],
     "types": []
   },
-  "include": ["code.ts"],
+  "include": ["plugin/code.ts"],
   "exclude": ["node_modules"]
 }
