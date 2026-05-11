@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": ["es6"],
+    "strict": true,
+    "outDir": "dist",
+    "noEmit": false,
+    "skipLibCheck": true,
+    "typeRoots": [],
+    "types": []
+  },
+  "include": ["code.ts"],
+  "exclude": ["node_modules"]
+}
