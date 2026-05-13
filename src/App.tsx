@@ -17,19 +17,14 @@ export function App() {
       <div className="w-full max-w-sm rounded-xl border bg-card p-4 shadow-sm">
         <div className="flex flex-col gap-4">
           <div>
-            <h1 className="text-lg font-semibold">
-              Table of Contents
-            </h1>
+            <h1 className="text-lg font-semibold">Table of Contents</h1>
 
-            <p className="text-muted-foreground text-sm">
-              Generate a table of contents from
-              sections on the current page.
+            <p className="text-sm text-muted-foreground">
+              Generate a table of contents from sections on the current page.
             </p>
           </div>
 
-          <Button onClick={handleGenerateTOC}>
-            Generate TOC
-          </Button>
+          <Button onClick={handleGenerateTOC}>Generate TOC</Button>
         </div>
       </div>
     </div>
