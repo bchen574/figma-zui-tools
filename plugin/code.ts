@@ -28,7 +28,8 @@ type FrameStyleConfig = Partial<FrameNode>;
 
 type TextStyleConfig = {
   fontSize: number;
-  isUnderlined: boolean;
+  color: RGB;
+  fontStyle: string;
 };
 
 const sharedVerticalAutoLayout: FrameStyleConfig = {
@@ -44,72 +45,88 @@ const sharedVerticalAutoLayout: FrameStyleConfig = {
 const frameStyles = {
   tocRoot: {
     ...sharedVerticalAutoLayout,
-    layoutMode: "HORIZONTAL",
-    itemSpacing: 80,
-    paddingTop: 32,
-    paddingBottom: 32,
-    paddingLeft: 32,
-    paddingRight: 32,
-    cornerRadius: 32,
-    strokes: [],
+    layoutMode: "VERTICAL",
+    itemSpacing: 200,
+    paddingTop: 200,
+    paddingBottom: 200,
+    paddingLeft: 200,
+    paddingRight: 200,
+    cornerRadius: 80,
     fills: [
       {
         type: "SOLID",
-        color: { r: 0.745, g: 0.964, b: 0.576 },
+        color: {
+          r: 0.96,
+          g: 0.96,
+          b: 0.96,
+        },
+        opacity: 0.5,
       },
     ],
+    strokes: [],
   } satisfies FrameStyleConfig,
-  parentGroup: {
+
+  depth0Group: {
     ...sharedVerticalAutoLayout,
-    itemSpacing: 24,
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
+    itemSpacing: 40,
     fills: [],
     strokes: [],
   } satisfies FrameStyleConfig,
-  childCard: {
+
+  depth1Group: {
     ...sharedVerticalAutoLayout,
-    itemSpacing: 20,
-    paddingTop: 32,
-    paddingBottom: 32,
-    paddingLeft: 32,
-    paddingRight: 32,
-    cornerRadius: 24,
-    fills: [createMutedFill()],
+    itemSpacing: 40,
+    fills: [],
     strokes: [],
   } satisfies FrameStyleConfig,
-  grandchildPill: {
+
+  depth2Group: {
     ...sharedVerticalAutoLayout,
-    itemSpacing: 16,
-    paddingTop: 24,
-    paddingBottom: 24,
-    paddingLeft: 24,
-    paddingRight: 24,
-    cornerRadius: 20,
-    fills: [createMutedFill()],
+    itemSpacing: 40,
+    paddingLeft: 40,
+    fills: [],
+    strokes: [],
+  } satisfies FrameStyleConfig,
+
+  depth3Group: {
+    ...sharedVerticalAutoLayout,
+    itemSpacing: 32,
+    paddingLeft: 32,
+    fills: [],
     strokes: [],
   } satisfies FrameStyleConfig,
 };
 
 const textStyles = {
-  parent: {
-    fontSize: 36,
-    isUnderlined: false,
-  } satisfies TextStyleConfig,
-  child: {
-    fontSize: 28,
-    isUnderlined: true,
-  } satisfies TextStyleConfig,
-  grandchild: {
-    fontSize: 24,
-    isUnderlined: true,
-  } satisfies TextStyleConfig,
-  emptyState: {
-    fontSize: 18,
-    isUnderlined: false,
-  } satisfies TextStyleConfig,
+  hero: {
+    fontSize: 164,
+    color: black(),
+    fontStyle: "SemiBold",
+  },
+
+  helper: {
+    fontSize: 80,
+    color: muted(),
+    fontStyle: "Regular",
+  },
+
+  depth1: {
+    fontSize: 120,
+    color: black(),
+    fontStyle: "SemiBold",
+  },
+
+  depth2: {
+    fontSize: 116,
+    color: black(),
+    fontStyle: "Regular",
+  },
+
+  depth3: {
+    fontSize: 96,
+    color: muted(),
+    fontStyle: "Regular",
+  },
 };
 
 figma.ui.onmessage = async (msg: PluginMessage) => {
@@ -120,32 +137,66 @@ figma.ui.onmessage = async (msg: PluginMessage) => {
 
 async function generateTOC() {
   const textFont: FontName = {
-    family: "Roboto",
+    family: "Geist",
     style: "Regular",
+  };
+  const textSemiBoldFont: FontName = {
+    family: "Geist",
+    style: "SemiBold",
   };
 
   await figma.loadFontAsync(textFont);
+  await figma.loadFontAsync(textSemiBoldFont);
 
   const tocFrame = createParentFrame();
   const tocTree = getTopLevelSections();
+  const heroFrame = createStyledFrame({
+    ...sharedVerticalAutoLayout,
+    itemSpacing: 24,
+    fills: [],
+    strokes: [],
+  });
+
+  heroFrame.appendChild(
+    createLinkedText({
+      textFont,
+      label: "Table of Contents",
+      ...textStyles.hero,
+    })
+  );
+
+  heroFrame.appendChild(
+    createLinkedText({
+      textFont,
+      label: "Click on label to navigate to page.",
+      ...textStyles.helper,
+    })
+  );
+
+  tocFrame.appendChild(heroFrame);
 
   if (tocTree.length === 0) {
     tocFrame.appendChild(
       createLinkedText({
         textFont,
         label: "No sections found on this page.",
-        ...textStyles.emptyState,
+        ...textStyles.helper,
       })
     );
   } else {
-    tocTree.forEach((node) => {
+    tocTree.forEach((node, index) => {
       tocFrame.appendChild(renderTOCNode(node, textFont));
+
+      const isLast = index === tocTree.length - 1;
+
+      if (!isLast) {
+        tocFrame.appendChild(createSectionDivider());
+      }
     });
   }
 
   figma.currentPage.appendChild(tocFrame);
   focusViewportOnNode(tocFrame);
-  figma.closePlugin();
 }
 
 function createParentFrame() {
@@ -166,7 +217,7 @@ function isSectionNode(node: SceneNode): node is SectionNode {
  * render phase simpler, testable, and independent from Figma tree traversal.
  */
 function buildTOCTree(section: SectionNode, depth: number): TOCNode {
-  const childSections = section.children.filter(isSectionNode);
+  const childSections = sortSections(section.children.filter(isSectionNode));
 
   return {
     id: section.id,
@@ -185,9 +236,62 @@ function buildTOCTree(section: SectionNode, depth: number): TOCNode {
  * inline narrowing logic everywhere child nodes are filtered.
  */
 function getTopLevelSections(): TOCNode[] {
-  return figma.currentPage.children
-    .filter(isSectionNode)
-    .map((section) => buildTOCTree(section, 0));
+  return sortSections(figma.currentPage.selection.filter(isSectionNode)).map(
+    (section) => buildTOCTree(section, 0)
+  );
+}
+
+function getSectionPriority(name: string): number {
+  const normalizedName = name.toLowerCase();
+
+  if (normalizedName.startsWith("user flow")) {
+    return 0;
+  }
+
+  if (normalizedName.startsWith("screens")) {
+    return 1;
+  }
+
+  if (normalizedName.startsWith("components")) {
+    return 2;
+  }
+
+  return 3;
+}
+
+function sortSections(sections: SectionNode[]): SectionNode[] {
+  return [...sections].sort((a, b) => {
+    const priorityDifference =
+      getSectionPriority(a.name) - getSectionPriority(b.name);
+
+    if (priorityDifference !== 0) {
+      return priorityDifference;
+    }
+
+    return a.name.localeCompare(b.name, undefined, {
+      sensitivity: "base",
+    });
+  });
+}
+
+function createSectionDivider(): FrameNode {
+  const divider = figma.createFrame();
+
+  divider.resize(1, 3);
+  divider.layoutAlign = "STRETCH";
+  divider.fills = [
+    {
+      type: "SOLID",
+      color: {
+        r: 0.7,
+        g: 0.7,
+        b: 0.7,
+      },
+    },
+  ];
+  divider.strokes = [];
+
+  return divider;
 }
 
 /**
@@ -209,26 +313,30 @@ function createStyledFrame(styles: Partial<FrameNode>): FrameNode {
 
 function resolveFrameStyles(depth: number): FrameStyleConfig {
   if (depth === 0) {
-    return frameStyles.parentGroup;
+    return frameStyles.depth0Group;
   }
 
   if (depth === 1) {
-    return frameStyles.childCard;
+    return frameStyles.depth1Group;
   }
 
-  return frameStyles.grandchildPill;
+  if (depth === 2) {
+    return frameStyles.depth2Group;
+  }
+
+  return frameStyles.depth3Group;
 }
 
 function resolveTextStyles(depth: number): TextStyleConfig {
   if (depth === 0) {
-    return textStyles.parent;
+    return textStyles.depth1;
   }
 
   if (depth === 1) {
-    return textStyles.child;
+    return textStyles.depth2;
   }
 
-  return textStyles.grandchild;
+  return textStyles.depth3;
 }
 
 /**
@@ -251,9 +359,17 @@ function renderTOCNode(node: TOCNode, textFont: FontName): FrameNode {
     })
   );
 
-  node.children.forEach((childNode) => {
-    frame.appendChild(renderTOCNode(childNode, textFont));
-  });
+  if (node.children.length > 0) {
+    const childGroup = createStyledFrame(frameStyles.depth2Group);
+
+    childGroup.name = `${node.name} Children`;
+
+    node.children.forEach((childNode) => {
+      childGroup.appendChild(renderTOCNode(childNode, textFont));
+    });
+
+    frame.appendChild(childGroup);
+  }
 
   return frame;
 }
@@ -264,37 +380,41 @@ function getNodeFrameName(node: TOCNode): string {
   }
 
   if (node.depth === 1) {
-    return `${node.name} Card`;
+    return `${node.name} Nested Group`;
   }
 
-  return `${node.name} Pill`;
+  return `${node.name} Indented Group`;
 }
 
 function createLinkedText({
   textFont,
   label,
   targetNodeId,
-  fontSize = 18,
-  isUnderlined = false,
+  fontSize,
+  color,
+  fontStyle,
 }: {
   textFont: FontName;
   label: string;
   targetNodeId?: string;
-  fontSize?: number;
-  isUnderlined?: boolean;
+  fontSize: number;
+  color: RGB;
+  fontStyle: string;
 }) {
   const text = figma.createText();
 
-  text.fontName = textFont;
+  text.fontName = {
+    family: textFont.family,
+    style: fontStyle,
+  };
   text.characters = label;
   text.fontSize = fontSize;
   text.fills = [
     {
       type: "SOLID",
-      color: { r: 0, g: 0, b: 0 },
+      color,
     },
   ];
-  text.textDecoration = isUnderlined ? "UNDERLINE" : "NONE";
 
   if (targetNodeId) {
     text.setRangeHyperlink(0, label.length, {
@@ -306,11 +426,19 @@ function createLinkedText({
   return text;
 }
 
-function createMutedFill(): SolidPaint {
+function black(): RGB {
   return {
-    type: "SOLID",
-    color: { r: 0, g: 0, b: 0 },
-    opacity: 0.05,
+    r: 0,
+    g: 0,
+    b: 0,
+  };
+}
+
+function muted(): RGB {
+  return {
+    r: 0.388,
+    g: 0.388,
+    b: 0.388,
   };
 }
 
