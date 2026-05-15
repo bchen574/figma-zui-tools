@@ -56,11 +56,11 @@ const frameStyles = {
       {
         type: "SOLID",
         color: {
-          r: 0.96,
-          g: 0.96,
-          b: 0.96,
+          r: 1,
+          g: 1,
+          b: 1,
         },
-        opacity: 0.5,
+        opacity: 1,
       },
     ],
     strokes: [],
@@ -83,7 +83,7 @@ const frameStyles = {
   depth2Group: {
     ...sharedVerticalAutoLayout,
     itemSpacing: 40,
-    paddingLeft: 40,
+    paddingLeft: 80,
     fills: [],
     strokes: [],
   } satisfies FrameStyleConfig,
