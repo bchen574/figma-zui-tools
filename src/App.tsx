@@ -1,11 +1,22 @@
 import { Button } from "@/components/ui/button";
 
 export function App() {
-  const handleGenerateTOC = () => {
+  const handleSyncPrimitiveTokens = () => {
     parent.postMessage(
       {
         pluginMessage: {
-          type: "generate-toc",
+          type: "sync-primitive-tokens",
+        },
+      },
+      "*"
+    );
+  };
+
+  const handleExportVariables = () => {
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "export-variables",
         },
       },
       "*"
@@ -14,18 +25,22 @@ export function App() {
 
   return (
     <div className="flex h-full w-full items-center justify-center bg-background p-4">
-      <div className="w-full max-w-sm rounded-xl border bg-card p-4 shadow-sm">
-        <div className="flex flex-col gap-4">
-          <div>
-            <h1 className="text-lg font-semibold">Table of Contents</h1>
+      <div className="flex flex-col gap-4 py-2">
+        <h1 className="text-lg font-semibold">Design System Tools</h1>
 
-            <p className="text-sm text-muted-foreground">
-              Generate a table of contents from sections on the current page.
-            </p>
-          </div>
+        <Button variant="secondary" onClick={handleSyncPrimitiveTokens}>
+          Sync Primitive Tokens
+        </Button>
+        <p className="text-sm text-muted-foreground">
+          Sync primitive tokens from the plugin file to Figma.
+        </p>
 
-          <Button onClick={handleGenerateTOC}>Generate TOC</Button>
-        </div>
+        <Button variant="secondary" onClick={handleExportVariables}>
+          Export Variables
+        </Button>
+        <p className="text-sm text-muted-foreground">
+          Export Variables from Figma Collection to Console
+        </p>
       </div>
     </div>
   );

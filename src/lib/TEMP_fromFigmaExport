@@ -1,0 +1,650 @@
+[
+  {
+    "variableId": "VariableID:8679:16441",
+    "variableName": "colors/brand/1000",
+    "variableType": "COLOR",
+    "variableValue": "#000000"
+  },
+  {
+    "variableId": "VariableID:8710:2980",
+    "variableName": "colors/secondary/1000",
+    "variableType": "COLOR",
+    "variableValue": "#000000"
+  },
+  {
+    "variableId": "VariableID:8710:2979",
+    "variableName": "colors/secondary/950",
+    "variableType": "COLOR",
+    "variableValue": "#011412"
+  },
+  {
+    "variableId": "VariableID:8710:2978",
+    "variableName": "colors/secondary/900",
+    "variableType": "COLOR",
+    "variableValue": "#0A1F1D"
+  },
+  {
+    "variableId": "VariableID:8710:2977",
+    "variableName": "colors/secondary/850",
+    "variableType": "COLOR",
+    "variableValue": "#152927"
+  },
+  {
+    "variableId": "VariableID:8710:2976",
+    "variableName": "colors/secondary/800",
+    "variableType": "COLOR",
+    "variableValue": "#203432"
+  },
+  {
+    "variableId": "VariableID:8710:2975",
+    "variableName": "colors/secondary/750",
+    "variableType": "COLOR",
+    "variableValue": "#2B3F3D"
+  },
+  {
+    "variableId": "VariableID:8710:2974",
+    "variableName": "colors/secondary/700",
+    "variableType": "COLOR",
+    "variableValue": "#364B48"
+  },
+  {
+    "variableId": "VariableID:8710:2973",
+    "variableName": "colors/secondary/650",
+    "variableType": "COLOR",
+    "variableValue": "#425654"
+  },
+  {
+    "variableId": "VariableID:8710:2972",
+    "variableName": "colors/secondary/600",
+    "variableType": "COLOR",
+    "variableValue": "#4E6260"
+  },
+  {
+    "variableId": "VariableID:8710:2971",
+    "variableName": "colors/secondary/500",
+    "variableType": "COLOR",
+    "variableValue": "#667B78"
+  },
+  {
+    "variableId": "VariableID:8710:2970",
+    "variableName": "colors/secondary/400",
+    "variableType": "COLOR",
+    "variableValue": "#7F9592"
+  },
+  {
+    "variableId": "VariableID:8710:2969",
+    "variableName": "colors/secondary/300",
+    "variableType": "COLOR",
+    "variableValue": "#9AB0AC"
+  },
+  {
+    "variableId": "VariableID:8710:2968",
+    "variableName": "colors/secondary/200",
+    "variableType": "COLOR",
+    "variableValue": "#B5CBC8"
+  },
+  {
+    "variableId": "VariableID:8710:2967",
+    "variableName": "colors/secondary/100",
+    "variableType": "COLOR",
+    "variableValue": "#D0E7E4"
+  },
+  {
+    "variableId": "VariableID:8710:2966",
+    "variableName": "colors/secondary/50",
+    "variableType": "COLOR",
+    "variableValue": "#DFF6F2"
+  },
+  {
+    "variableId": "VariableID:8710:2965",
+    "variableName": "colors/secondary/20",
+    "variableType": "COLOR",
+    "variableValue": "#E7FEFA"
+  },
+  {
+    "variableId": "VariableID:8710:2964",
+    "variableName": "colors/secondary/10",
+    "variableType": "COLOR",
+    "variableValue": "#F2FFFC"
+  },
+  {
+    "variableId": "VariableID:8710:2963",
+    "variableName": "colors/secondary/0",
+    "variableType": "COLOR",
+    "variableValue": "#FFFFFF"
+  },
+  {
+    "variableId": "VariableID:8679:16442",
+    "variableName": "colors/brand/950",
+    "variableType": "COLOR",
+    "variableValue": "#001412"
+  },
+  {
+    "variableId": "VariableID:8679:16443",
+    "variableName": "colors/brand/900",
+    "variableType": "COLOR",
+    "variableValue": "#00201E"
+  },
+  {
+    "variableId": "VariableID:8679:16444",
+    "variableName": "colors/brand/850",
+    "variableType": "COLOR",
+    "variableValue": "#002B28"
+  },
+  {
+    "variableId": "VariableID:8679:16445",
+    "variableName": "colors/brand/800",
+    "variableType": "COLOR",
+    "variableValue": "#003734"
+  },
+  {
+    "variableId": "VariableID:8679:16446",
+    "variableName": "colors/brand/750",
+    "variableType": "COLOR",
+    "variableValue": "#00433F"
+  },
+  {
+    "variableId": "VariableID:8679:16447",
+    "variableName": "colors/brand/700",
+    "variableType": "COLOR",
+    "variableValue": "#00504B"
+  },
+  {
+    "variableId": "VariableID:8679:16448",
+    "variableName": "colors/brand/650",
+    "variableType": "COLOR",
+    "variableValue": "#005D57"
+  },
+  {
+    "variableId": "VariableID:8679:16449",
+    "variableName": "colors/brand/600",
+    "variableType": "COLOR",
+    "variableValue": "#006A64"
+  },
+  {
+    "variableId": "VariableID:8679:16450",
+    "variableName": "colors/brand/500",
+    "variableType": "COLOR",
+    "variableValue": "#00867E"
+  },
+  {
+    "variableId": "VariableID:8679:16451",
+    "variableName": "colors/brand/400",
+    "variableType": "COLOR",
+    "variableValue": "#2FA098"
+  },
+  {
+    "variableId": "VariableID:8679:16452",
+    "variableName": "colors/brand/300",
+    "variableType": "COLOR",
+    "variableValue": "#51BCB3"
+  },
+  {
+    "variableId": "VariableID:8679:16453",
+    "variableName": "colors/brand/200",
+    "variableType": "COLOR",
+    "variableValue": "#6FD7CE"
+  },
+  {
+    "variableId": "VariableID:8679:16454",
+    "variableName": "colors/brand/100",
+    "variableType": "COLOR",
+    "variableValue": "#8CF4EA"
+  },
+  {
+    "variableId": "VariableID:8679:16455",
+    "variableName": "colors/brand/50",
+    "variableType": "COLOR",
+    "variableValue": "#B1FFF7"
+  },
+  {
+    "variableId": "VariableID:8679:16456",
+    "variableName": "colors/brand/20",
+    "variableType": "COLOR",
+    "variableValue": "#E4FFFB"
+  },
+  {
+    "variableId": "VariableID:8679:16457",
+    "variableName": "colors/brand/10",
+    "variableType": "COLOR",
+    "variableValue": "#F2FFFC"
+  },
+  {
+    "variableId": "VariableID:8679:16458",
+    "variableName": "colors/brand/0",
+    "variableType": "COLOR",
+    "variableValue": "#FFFFFF"
+  },
+  {
+    "variableId": "VariableID:8679:16459",
+    "variableName": "colors/yellow/1000",
+    "variableType": "COLOR",
+    "variableValue": "#000000"
+  },
+  {
+    "variableId": "VariableID:8679:16460",
+    "variableName": "colors/yellow/950",
+    "variableType": "COLOR",
+    "variableValue": "#180F00"
+  },
+  {
+    "variableId": "VariableID:8679:16461",
+    "variableName": "colors/yellow/900",
+    "variableType": "COLOR",
+    "variableValue": "#261A00"
+  },
+  {
+    "variableId": "VariableID:8679:16462",
+    "variableName": "colors/yellow/850",
+    "variableType": "COLOR",
+    "variableValue": "#322300"
+  },
+  {
+    "variableId": "VariableID:8679:16463",
+    "variableName": "colors/yellow/800",
+    "variableType": "COLOR",
+    "variableValue": "#402D00"
+  },
+  {
+    "variableId": "VariableID:8679:16464",
+    "variableName": "colors/yellow/750",
+    "variableType": "COLOR",
+    "variableValue": "#4D3800"
+  },
+  {
+    "variableId": "VariableID:8679:16465",
+    "variableName": "colors/yellow/700",
+    "variableType": "COLOR",
+    "variableValue": "#5C4300"
+  },
+  {
+    "variableId": "VariableID:8679:16466",
+    "variableName": "colors/yellow/650",
+    "variableType": "COLOR",
+    "variableValue": "#6A4E00"
+  },
+  {
+    "variableId": "VariableID:8679:16467",
+    "variableName": "colors/yellow/600",
+    "variableType": "COLOR",
+    "variableValue": "#795900"
+  },
+  {
+    "variableId": "VariableID:8679:16468",
+    "variableName": "colors/yellow/500",
+    "variableType": "COLOR",
+    "variableValue": "#987100"
+  },
+  {
+    "variableId": "VariableID:8679:16469",
+    "variableName": "colors/yellow/400",
+    "variableType": "COLOR",
+    "variableValue": "#B88900"
+  },
+  {
+    "variableId": "VariableID:8679:16470",
+    "variableName": "colors/yellow/300",
+    "variableType": "COLOR",
+    "variableValue": "#D9A200"
+  },
+  {
+    "variableId": "VariableID:8679:16471",
+    "variableName": "colors/yellow/200",
+    "variableType": "COLOR",
+    "variableValue": "#F8BD2A"
+  },
+  {
+    "variableId": "VariableID:8679:16472",
+    "variableName": "colors/yellow/100",
+    "variableType": "COLOR",
+    "variableValue": "#FFDFA0"
+  },
+  {
+    "variableId": "VariableID:8679:16473",
+    "variableName": "colors/yellow/50",
+    "variableType": "COLOR",
+    "variableValue": "#FFEFD5"
+  },
+  {
+    "variableId": "VariableID:8679:16474",
+    "variableName": "colors/yellow/20",
+    "variableType": "COLOR",
+    "variableValue": "#FFF8F2"
+  },
+  {
+    "variableId": "VariableID:8679:16475",
+    "variableName": "colors/yellow/10",
+    "variableType": "COLOR",
+    "variableValue": "#FFFBFF"
+  },
+  {
+    "variableId": "VariableID:8679:16476",
+    "variableName": "colors/yellow/0",
+    "variableType": "COLOR",
+    "variableValue": "#FFFFFF"
+  },
+  {
+    "variableId": "VariableID:8679:16477",
+    "variableName": "colors/green/1000",
+    "variableType": "COLOR",
+    "variableValue": "#000000"
+  },
+  {
+    "variableId": "VariableID:8679:16478",
+    "variableName": "colors/green/950",
+    "variableType": "COLOR",
+    "variableValue": "#001502"
+  },
+  {
+    "variableId": "VariableID:8679:16479",
+    "variableName": "colors/green/900",
+    "variableType": "COLOR",
+    "variableValue": "#002204"
+  },
+  {
+    "variableId": "VariableID:8679:16480",
+    "variableName": "colors/green/850",
+    "variableType": "COLOR",
+    "variableValue": "#002D06"
+  },
+  {
+    "variableId": "VariableID:8679:16481",
+    "variableName": "colors/green/800",
+    "variableType": "COLOR",
+    "variableValue": "#003909"
+  },
+  {
+    "variableId": "VariableID:8679:16482",
+    "variableName": "colors/green/750",
+    "variableType": "COLOR",
+    "variableValue": "#00460E"
+  },
+  {
+    "variableId": "VariableID:8679:16483",
+    "variableName": "colors/green/700",
+    "variableType": "COLOR",
+    "variableValue": "#005312"
+  },
+  {
+    "variableId": "VariableID:8679:16484",
+    "variableName": "colors/green/650",
+    "variableType": "COLOR",
+    "variableValue": "#076019"
+  },
+  {
+    "variableId": "VariableID:8679:16485",
+    "variableName": "colors/green/600",
+    "variableType": "COLOR",
+    "variableValue": "#1B6D24"
+  },
+  {
+    "variableId": "VariableID:8679:16486",
+    "variableName": "colors/green/500",
+    "variableType": "COLOR",
+    "variableValue": "#38873A"
+  },
+  {
+    "variableId": "VariableID:8679:16487",
+    "variableName": "colors/green/400",
+    "variableType": "COLOR",
+    "variableValue": "#53A252"
+  },
+  {
+    "variableId": "VariableID:8679:16488",
+    "variableName": "colors/green/300",
+    "variableType": "COLOR",
+    "variableValue": "#6DBD6A"
+  },
+  {
+    "variableId": "VariableID:8679:16489",
+    "variableName": "colors/green/200",
+    "variableType": "COLOR",
+    "variableValue": "#88D982"
+  },
+  {
+    "variableId": "VariableID:8679:16490",
+    "variableName": "colors/green/100",
+    "variableType": "COLOR",
+    "variableValue": "#A3F69C"
+  },
+  {
+    "variableId": "VariableID:8679:16491",
+    "variableName": "colors/green/50",
+    "variableType": "COLOR",
+    "variableValue": "#C8FFBF"
+  },
+  {
+    "variableId": "VariableID:8679:16492",
+    "variableName": "colors/green/20",
+    "variableType": "COLOR",
+    "variableValue": "#ECFFE4"
+  },
+  {
+    "variableId": "VariableID:8679:16493",
+    "variableName": "colors/green/10",
+    "variableType": "COLOR",
+    "variableValue": "#F6FFF0"
+  },
+  {
+    "variableId": "VariableID:8679:16494",
+    "variableName": "colors/green/0",
+    "variableType": "COLOR",
+    "variableValue": "#FFFFFF"
+  },
+  {
+    "variableId": "VariableID:8679:16495",
+    "variableName": "colors/red/1000",
+    "variableType": "COLOR",
+    "variableValue": "#000000"
+  },
+  {
+    "variableId": "VariableID:8679:16496",
+    "variableName": "colors/red/950",
+    "variableType": "COLOR",
+    "variableValue": "#2D0001"
+  },
+  {
+    "variableId": "VariableID:8679:16497",
+    "variableName": "colors/red/900",
+    "variableType": "COLOR",
+    "variableValue": "#410002"
+  },
+  {
+    "variableId": "VariableID:8679:16498",
+    "variableName": "colors/red/850",
+    "variableType": "COLOR",
+    "variableValue": "#540003"
+  },
+  {
+    "variableId": "VariableID:8679:16499",
+    "variableName": "colors/red/800",
+    "variableType": "COLOR",
+    "variableValue": "#690004"
+  },
+  {
+    "variableId": "VariableID:8679:16500",
+    "variableName": "colors/red/750",
+    "variableType": "COLOR",
+    "variableValue": "#7E0007"
+  },
+  {
+    "variableId": "VariableID:8679:16501",
+    "variableName": "colors/red/700",
+    "variableType": "COLOR",
+    "variableValue": "#930009"
+  },
+  {
+    "variableId": "VariableID:8679:16502",
+    "variableName": "colors/red/650",
+    "variableType": "COLOR",
+    "variableValue": "#A8060F"
+  },
+  {
+    "variableId": "VariableID:8679:16503",
+    "variableName": "colors/red/600",
+    "variableType": "COLOR",
+    "variableValue": "#BA1A1A"
+  },
+  {
+    "variableId": "VariableID:8679:16504",
+    "variableName": "colors/red/500",
+    "variableType": "COLOR",
+    "variableValue": "#DE372F"
+  },
+  {
+    "variableId": "VariableID:8679:16505",
+    "variableName": "colors/red/400",
+    "variableType": "COLOR",
+    "variableValue": "#FF5449"
+  },
+  {
+    "variableId": "VariableID:8679:16506",
+    "variableName": "colors/red/300",
+    "variableType": "COLOR",
+    "variableValue": "#FF897D"
+  },
+  {
+    "variableId": "VariableID:8679:16507",
+    "variableName": "colors/red/200",
+    "variableType": "COLOR",
+    "variableValue": "#FFB4AB"
+  },
+  {
+    "variableId": "VariableID:8679:16508",
+    "variableName": "colors/red/100",
+    "variableType": "COLOR",
+    "variableValue": "#FFDAD5"
+  },
+  {
+    "variableId": "VariableID:8679:16509",
+    "variableName": "colors/red/50",
+    "variableType": "COLOR",
+    "variableValue": "#FFEDEA"
+  },
+  {
+    "variableId": "VariableID:8679:16510",
+    "variableName": "colors/red/20",
+    "variableType": "COLOR",
+    "variableValue": "#FFF8F7"
+  },
+  {
+    "variableId": "VariableID:8679:16511",
+    "variableName": "colors/red/10",
+    "variableType": "COLOR",
+    "variableValue": "#FFFBFF"
+  },
+  {
+    "variableId": "VariableID:8679:16512",
+    "variableName": "colors/red/0",
+    "variableType": "COLOR",
+    "variableValue": "#FFFFFF"
+  },
+  {
+    "variableId": "VariableID:8684:32586",
+    "variableName": "colors/neutral/1000",
+    "variableType": "COLOR",
+    "variableValue": "#000000"
+  },
+  {
+    "variableId": "VariableID:8684:32587",
+    "variableName": "colors/neutral/950",
+    "variableType": "COLOR",
+    "variableValue": "#0F1111"
+  },
+  {
+    "variableId": "VariableID:8684:32588",
+    "variableName": "colors/neutral/900",
+    "variableType": "COLOR",
+    "variableValue": "#191C1C"
+  },
+  {
+    "variableId": "VariableID:8684:32589",
+    "variableName": "colors/neutral/850",
+    "variableType": "COLOR",
+    "variableValue": "#232626"
+  },
+  {
+    "variableId": "VariableID:8684:32590",
+    "variableName": "colors/neutral/800",
+    "variableType": "COLOR",
+    "variableValue": "#2E3130"
+  },
+  {
+    "variableId": "VariableID:8684:32591",
+    "variableName": "colors/neutral/750",
+    "variableType": "COLOR",
+    "variableValue": "#393C3B"
+  },
+  {
+    "variableId": "VariableID:8684:32592",
+    "variableName": "colors/neutral/700",
+    "variableType": "COLOR",
+    "variableValue": "#444747"
+  },
+  {
+    "variableId": "VariableID:8684:32593",
+    "variableName": "colors/neutral/650",
+    "variableType": "COLOR",
+    "variableValue": "#505352"
+  },
+  {
+    "variableId": "VariableID:8684:32594",
+    "variableName": "colors/neutral/600",
+    "variableType": "COLOR",
+    "variableValue": "#5C5F5E"
+  },
+  {
+    "variableId": "VariableID:8684:32595",
+    "variableName": "colors/neutral/500",
+    "variableType": "COLOR",
+    "variableValue": "#757877"
+  },
+  {
+    "variableId": "VariableID:8684:32596",
+    "variableName": "colors/neutral/400",
+    "variableType": "COLOR",
+    "variableValue": "#8F9190"
+  },
+  {
+    "variableId": "VariableID:8684:32597",
+    "variableName": "colors/neutral/300",
+    "variableType": "COLOR",
+    "variableValue": "#A9ACAA"
+  },
+  {
+    "variableId": "VariableID:8684:32598",
+    "variableName": "colors/neutral/200",
+    "variableType": "COLOR",
+    "variableValue": "#C5C7C6"
+  },
+  {
+    "variableId": "VariableID:8684:32599",
+    "variableName": "colors/neutral/100",
+    "variableType": "COLOR",
+    "variableValue": "#E1E3E1"
+  },
+  {
+    "variableId": "VariableID:8684:32600",
+    "variableName": "colors/neutral/50",
+    "variableType": "COLOR",
+    "variableValue": "#F0F1F0"
+  },
+  {
+    "variableId": "VariableID:8684:32601",
+    "variableName": "colors/neutral/20",
+    "variableType": "COLOR",
+    "variableValue": "#F8FAF8"
+  },
+  {
+    "variableId": "VariableID:8684:32602",
+    "variableName": "colors/neutral/10",
+    "variableType": "COLOR",
+    "variableValue": "#FBFCFB"
+  },
+  {
+    "variableId": "VariableID:8684:32603",
+    "variableName": "colors/neutral/0",
+    "variableType": "COLOR",
+    "variableValue": "#FFFFFF"
+  }
+]

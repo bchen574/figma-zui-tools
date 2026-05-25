@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "lib": ["es6"],
+    "target": "ES2017",
+    "lib": ["ES2017"],
     "strict": true,
     "outDir": "dist",
     "noEmit": false,

@@ -1,0 +1,57 @@
+import type { PrimitiveColorPalette } from "../tokens/primitiveTokens.types";
+
+type RGBA = {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+};
+
+export type FigmaColorVariable = {
+  name: string;
+  value: RGBA;
+};
+
+export function hexToRgba(hex: string): RGBA {
+  const clean = hex.replace("#", "");
+
+  return {
+    r: parseInt(clean.slice(0, 2), 16) / 255,
+    g: parseInt(clean.slice(2, 4), 16) / 255,
+    b: parseInt(clean.slice(4, 6), 16) / 255,
+    a: 1,
+  };
+}
+
+export function rgbaToHex(rgba: RGBA): string {
+  const r = Math.round(rgba.r * 255)
+    .toString(16)
+    .padStart(2, "0");
+
+  const g = Math.round(rgba.g * 255)
+    .toString(16)
+    .padStart(2, "0");
+
+  const b = Math.round(rgba.b * 255)
+    .toString(16)
+    .padStart(2, "0");
+
+  return `#${r}${g}${b}`.toUpperCase();
+}
+
+export function convertToFigmaVariables(
+  palette: PrimitiveColorPalette
+): FigmaColorVariable[] {
+  const variables: FigmaColorVariable[] = [];
+
+  for (const [paletteName, scale] of Object.entries(palette)) {
+    for (const [toneKey, hex] of Object.entries(scale)) {
+      variables.push({
+        name: `colors/${paletteName}/${toneKey}`,
+        value: hexToRgba(hex),
+      });
+    }
+  }
+
+  return variables;
+}
