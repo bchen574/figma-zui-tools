@@ -39,15 +39,24 @@ export function rgbaToHex(rgba: RGBA): string {
   return `#${r}${g}${b}`.toUpperCase();
 }
 
-export function convertToFigmaVariables(
-  palette: PrimitiveColorPalette
+type ConvertToFigmaVariablesOptions = {
+  groupName?: string;
+};
+
+export function convertToFigmaColorVariables(
+  palette: PrimitiveColorPalette,
+  options?: ConvertToFigmaVariablesOptions
 ): FigmaColorVariable[] {
   const variables: FigmaColorVariable[] = [];
 
   for (const [paletteName, scale] of Object.entries(palette)) {
     for (const [toneKey, hex] of Object.entries(scale)) {
+      const nameParts = [options?.groupName, paletteName, toneKey].filter(
+        Boolean
+      );
+
       variables.push({
-        name: `colors/${paletteName}/${toneKey}`,
+        name: nameParts.join("/"),
         value: hexToRgba(hex),
       });
     }
