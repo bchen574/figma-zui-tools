@@ -6,50 +6,37 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export function App() {
   const [variableCollections, setVariableCollections] = useState<string[]>([]);
-  const [output, setOutput] = useState<unknown>("No output yet.");
+  const [output, setOutput] = useState<unknown>(null);
+  const [selectedCollections, setSelectedCollections] = useState<string | null>(
+    null
+  );
 
-  const handleVariableCollectionsList = () => {
+  function postFigmaMessage(messageType: string, data?: unknown) {
     parent.postMessage(
       {
         pluginMessage: {
-          type: "getVariableCollectionsList",
+          type: messageType,
+          data: data,
         },
       },
       "*"
     );
+  }
+
+  const handleVariableCollectionsList = () => {
+    postFigmaMessage("getVariableCollectionsList");
   };
 
   const handleSyncPrimitiveTokens = () => {
-    parent.postMessage(
-      {
-        pluginMessage: {
-          type: "sync-primitive-tokens",
-        },
-      },
-      "*"
-    );
+    postFigmaMessage("sync-primitive-tokens");
   };
 
   const handleExportVariables = () => {
-    parent.postMessage(
-      {
-        pluginMessage: {
-          type: "export-color-variables",
-        },
-      },
-      "*"
-    );
+    postFigmaMessage("export-color-variables", selectedCollections);
   };
 
   const handleExportTypographyStyles = () => {
-    parent.postMessage(
-      {
-        pluginMessage: {
-          type: "export-typography-styles",
-        },
-      },
-      "*"
-    );
+    postFigmaMessage("export-typography-styles");
   };
 
   useEffect(() => {
@@ -98,9 +85,13 @@ export function App() {
         <div className="flex flex-col gap-2">
           <h3 className="text-md font-semibold">Export Variables</h3>
           <p className="text-xs text-muted-foreground">
-            Export Variables from Figma Collection to Console
+            Export Variables from Figma Collection to MUI token format.
           </p>
-          <CollectionsDropdown variableCollections={variableCollections} />
+          <CollectionsDropdown
+            variableCollections={variableCollections}
+            selectedCollections={selectedCollections}
+            setSelectedCollections={setSelectedCollections}
+          />
           <Button variant="default" onClick={handleExportVariables}>
             Export Variables
           </Button>
@@ -120,7 +111,11 @@ export function App() {
       <div className="flex min-h-0 flex-1 flex-col">
         <h3 className="text-md pb-4 font-semibold">Output</h3>
         <ScrollArea className="min-h-0 flex-1 rounded border bg-muted">
-          <pre className="p-4 text-xs">{JSON.stringify(output, null, 2)}</pre>
+          <pre className="p-4 text-xs">
+            {output === null
+              ? "No output to display."
+              : JSON.stringify(output, null, 2)}
+          </pre>
         </ScrollArea>
       </div>
     </div>

@@ -40,7 +40,7 @@ figma.ui.onmessage = async (message) => {
 
     case "export-color-variables":
       try {
-        const targetCollections = ["custom colors"];
+        const targetCollections = [message.data];
         const exportData = await exportColorVariables(targetCollections);
 
         figma.notify("Color variables exported. Check plugin output.");
@@ -57,10 +57,10 @@ figma.ui.onmessage = async (message) => {
         figma.ui.postMessage({
           type: "exportedColorVariables",
           success: false,
-          data: message,
+          error: message,
         });
 
-        figma.notify(`Failed to export Color variables: ${message}`);
+        figma.notify(`Failed to export Color variables: ${error}`);
       }
       break;
 

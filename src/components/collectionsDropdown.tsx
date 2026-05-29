@@ -9,11 +9,19 @@ import {
 
 export function CollectionsDropdown({
   variableCollections,
+  selectedCollections,
+  setSelectedCollections,
 }: {
   variableCollections: string[];
+  selectedCollections: string | null;
+  setSelectedCollections: (collection: string | null) => void;
 }) {
   return (
-    <Combobox items={variableCollections}>
+    <Combobox
+      items={variableCollections}
+      value={selectedCollections}
+      onValueChange={setSelectedCollections}
+    >
       <ComboboxInput placeholder="Select a Collection" />
       <ComboboxContent>
         <ComboboxEmpty>No items found.</ComboboxEmpty>
