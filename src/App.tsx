@@ -70,7 +70,7 @@ export function App() {
   return (
     <div className="flex h-full w-full gap-4 bg-background p-5">
       <div className="flex flex-col gap-6 py-2">
-        <h1 className="text-lg font-semibold">Design System Tools</h1>
+        <h1 className="text-lg font-semibold">Design System Tools TEST</h1>
 
         <div className="flex flex-col gap-2">
           <h3 className="text-md font-semibold">Sync Primite Color Tokens</h3>
