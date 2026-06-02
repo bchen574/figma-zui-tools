@@ -70,20 +70,22 @@ export function App() {
   return (
     <div className="flex h-full w-full gap-4 bg-background p-5">
       <div className="flex flex-col gap-6 py-2">
-        <h1 className="text-lg font-semibold">Design System Tools TEST</h1>
+        <h1 className="text-lg font-semibold">Design System Tools</h1>
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-md font-semibold">Sync Primite Color Tokens</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="text-sm font-semibold">Sync Primitive Color Tokens</h3>
+          <p className="text-xs text-muted-foreground">
             Sync primitive tokens from the plugin file to Figma.
           </p>
-          <Button variant="default" onClick={handleSyncPrimitiveTokens}>
+          <Button variant="bold" onClick={handleSyncPrimitiveTokens}>
             Sync Primitive Tokens
           </Button>
         </div>
 
+        <div className="h-[1px] bg-muted"></div>
+
         <div className="flex flex-col gap-2">
-          <h3 className="text-md font-semibold">Export Variables</h3>
+          <h3 className="text-sm font-semibold">Export Variables</h3>
           <p className="text-xs text-muted-foreground">
             Export Variables from Figma Collection to MUI token format.
           </p>
@@ -92,21 +94,23 @@ export function App() {
             selectedCollections={selectedCollections}
             setSelectedCollections={setSelectedCollections}
           />
-          <Button variant="default" onClick={handleExportVariables}>
+          <Button variant="bold" onClick={handleExportVariables}>
             Export Variables
           </Button>
         </div>
+        <div className="h-[1px] bg-muted"></div>
 
         <div className="flex flex-col gap-2">
-          <h3 className="text-md font-semibold">Export Typography Styles</h3>
+          <h3 className="text-sm font-semibold">Export Typography Styles</h3>
           <p className="text-xs text-muted-foreground">
             Export Typography Styles from Figma to Console
           </p>
-          <Button variant="default" onClick={handleExportTypographyStyles}>
+          <Button variant="bold" onClick={handleExportTypographyStyles}>
             Export Typography Styles
           </Button>
         </div>
       </div>
+      <div className="h-[1px] bg-muted"></div>
 
       <div className="flex min-h-0 flex-1 flex-col">
         <h3 className="text-md pb-4 font-semibold">Output</h3>
