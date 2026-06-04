@@ -6,8 +6,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Navigation } from "@/components/navigation";
 import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
 
 export function App() {
+  const [textAreaInput, setTextAreaInput] = useState("");
   const [variableCollections, setVariableCollections] = useState<string[]>([]);
   const [output, setOutput] = useState<unknown>(null);
   const [selectedCollections, setSelectedCollections] = useState<string | null>(
@@ -32,8 +34,11 @@ export function App() {
     postFigmaMessage("getVariableCollectionsList");
   };
 
-  const handleSyncPrimitiveTokens = () => {
-    postFigmaMessage("sync-primitive-tokens");
+  const handleImportColorVariables = () => {
+    postFigmaMessage("import-color-variables", {
+      collectionName: selectedCollections,
+      tokens: JSON.parse(textAreaInput),
+    });
   };
 
   const handleExportVariables = () => {
@@ -72,6 +77,82 @@ export function App() {
     };
   }, []);
 
+  const exportVariablesPage = (
+    <div className="flex h-full min-h-0 w-full gap-4">
+      <div className="flex w-[300px] flex-col gap-2">
+        <h3 className="text-sm font-semibold">Export Variables</h3>
+        <p className="mb-2 text-xs text-muted-foreground">
+          Export Variables from Figma Collection to MUI token format.
+        </p>
+        <Field className="mb-2">
+          <FieldLabel>Collection Name</FieldLabel>
+          <CollectionsDropdown
+            variableCollections={variableCollections}
+            selectedCollections={selectedCollections}
+            setSelectedCollections={setSelectedCollections}
+          />
+        </Field>
+        <Button
+          disabled={selectedCollections === null}
+          variant="bold"
+          onClick={handleExportVariables}
+        >
+          Export Variables
+        </Button>
+      </div>
+      <div className="flex min-h-0 flex-1 flex-col">
+        <ScrollArea className="min-h-0 flex-1 rounded border bg-muted">
+          <pre className="p-4 text-xs">
+            {output === null
+              ? "No output to display."
+              : JSON.stringify(output, null, 2)}
+          </pre>
+        </ScrollArea>
+      </div>
+    </div>
+  );
+  const importColorVariablesPage = (
+    <div className="flex h-full min-h-0 w-full gap-4">
+      <div className="flex w-[300px] flex-col gap-2">
+        <h3 className="text-sm font-semibold">Import Color Tokens</h3>
+        <p className="mb-2 text-xs text-muted-foreground">
+          Import color tokens to as variables in a Figma collection.
+        </p>
+        <Field className="mb-2">
+          <FieldLabel>Collection Name</FieldLabel>
+          <CollectionsDropdown
+            variableCollections={variableCollections}
+            selectedCollections={selectedCollections}
+            setSelectedCollections={setSelectedCollections}
+          />
+        </Field>
+        <Button
+          disabled={selectedCollections === null}
+          variant="bold"
+          onClick={handleImportColorVariables}
+        >
+          Import Variables
+        </Button>
+      </div>
+      <div className="flex min-h-0 flex-1 flex-col">
+        <Textarea
+          value={textAreaInput}
+          onChange={(e) => setTextAreaInput(e.target.value)}
+          placeholder={`{
+  "primary": {
+    "100": "#E3F2FD",
+    "500": "#2196F3"
+  },
+  "secondary": {
+    "100": "#F3E5F5"
+  }
+}`}
+          className="min-h-0 flex-1 rounded border bg-muted"
+        ></Textarea>
+      </div>
+    </div>
+  );
+
   return (
     <div className="flex h-full w-full flex-col bg-background p-5">
       <h1 className="text-lg font-semibold">Design System Tools</h1>
@@ -79,56 +160,8 @@ export function App() {
       <Navigation activePage={activePage} setActivePage={setActivePage} />
       <Separator className="mb-5"></Separator>
 
-      {activePage === "Export Variables" && (
-        <div className="flex h-full min-h-0 w-full gap-4">
-          <div className="flex w-[300px] flex-col gap-2">
-            <h3 className="text-sm font-semibold">Export Variables</h3>
-            <p className="mb-2 text-xs text-muted-foreground">
-              Export Variables from Figma Collection to MUI token format.
-            </p>
-            <Field className="mb-2">
-              <FieldLabel>Collection Name</FieldLabel>
-              <CollectionsDropdown
-                variableCollections={variableCollections}
-                selectedCollections={selectedCollections}
-                setSelectedCollections={setSelectedCollections}
-              />
-            </Field>
-            <Button
-              disabled={selectedCollections === null}
-              variant="bold"
-              onClick={handleExportVariables}
-            >
-              Export Variables
-            </Button>
-          </div>
-          <div className="flex min-h-0 flex-1 flex-col">
-            <ScrollArea className="min-h-0 flex-1 rounded border bg-muted">
-              <pre className="p-4 text-xs">
-                {output === null
-                  ? "No output to display."
-                  : JSON.stringify(output, null, 2)}
-              </pre>
-            </ScrollArea>
-          </div>
-        </div>
-      )}
-      {activePage === "Import Variables" && (
-        <div>
-          {" "}
-          <div className="flex flex-col gap-2">
-            <h3 className="text-sm font-semibold">
-              Sync Primitive Color Tokens
-            </h3>
-            <p className="text-xs text-muted-foreground">
-              Sync primitive tokens from the plugin file to Figma.
-            </p>
-            <Button variant="bold" onClick={handleSyncPrimitiveTokens}>
-              Sync Primitive Tokens
-            </Button>
-          </div>
-        </div>
-      )}
+      {activePage === "Export Variables" && exportVariablesPage}
+      {activePage === "Import Color Variables" && importColorVariablesPage}
       {activePage === "Export Styles" && (
         <div className="flex flex-col gap-2">
           <h3 className="text-sm font-semibold">Export Typography Styles</h3>

@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 export function Navigation({ activePage, setActivePage }: NavigationProps) {
   const pages = [
     "Export Variables",
-    "Import Variables",
+    "Import Color Variables",
     "Export Styles",
   ] as const;
 
