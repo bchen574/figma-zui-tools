@@ -1,8 +1,8 @@
 /// <reference types="@figma/plugin-typings" />
 
-import { exportColorVariables } from "../src/lib/figma/exportColorVariables";
+import { exportFigmaVariables } from "../src/lib/figma/exportFigmaVariables";
 
-import { convertToFigmaColorVariables } from "../src/lib/figma/convertToFigmaColorVariables";
+import { convertToFigmaColorVariables } from "../src/lib/figma/convertToFigmaVariables";
 import { exportTypographyStyles } from "../src/lib/figma/exportTypographyStyles";
 import { primitiveTokens } from "../src/lib/tokens/primitiveTokens";
 import { getVariableCollectionsList } from "../src/lib/figma/getVariablesCollectionList";
@@ -38,10 +38,10 @@ figma.ui.onmessage = async (message) => {
       }
       break;
 
-    case "export-color-variables":
+    case "export-variables":
       try {
         const targetCollections = [message.data];
-        const exportData = await exportColorVariables(targetCollections);
+        const exportData = await exportFigmaVariables(targetCollections);
 
         figma.notify("Color variables exported. Check plugin output.");
 

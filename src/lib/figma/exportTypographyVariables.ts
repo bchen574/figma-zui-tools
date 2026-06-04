@@ -1,6 +1,6 @@
 /// <reference types="@figma/plugin-typings" />
 
-export async function exportColorVariables(targetCollections: string[]) {
+export async function exportFigmaVariables(targetCollections: string[]) {
   const collections = await figma.variables.getLocalVariableCollectionsAsync();
 
   const filteredCollections = collections.filter((collection) =>
