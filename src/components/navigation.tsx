@@ -9,6 +9,7 @@ export function Navigation({ activePage, setActivePage }: NavigationProps) {
   const pages = [
     "Export Variables",
     "Import Color Variables",
+    "Import Number Variables",
     "Export Styles",
   ] as const;
 

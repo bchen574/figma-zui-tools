@@ -1,6 +1,6 @@
 {
   "name": "Figma MUI Palette Export",
-  "id": "1614412649891950181",
+  "id": "figma-mui-palette-export-v1",
   "api": "1.0.0",
   "main": "dist/code.js",
   "capabilities": [],

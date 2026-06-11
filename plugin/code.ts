@@ -6,6 +6,7 @@ import { exportTypographyStyles } from "../src/lib/figma/exportTypographyStyles"
 
 import { getVariableCollectionsList } from "../src/lib/figma/getVariablesCollectionList";
 import { importColorVariables } from "../src/lib/figma/importColorVariables";
+import { importNumberVariables } from "../src/lib/figma/importNumberVariables";
 
 figma.showUI(__html__, {
   width: 800,
@@ -89,6 +90,24 @@ figma.ui.onmessage = async (message) => {
           error instanceof Error ? error.message : "Unknown error";
 
         figma.notify(`Failed to import color variables: ${message}`);
+        console.log(message);
+      }
+
+      break;
+
+    case "import-number-variables":
+      try {
+        const collectionName = message.data.collectionName;
+        const tokens = message.data.tokens;
+        const modeNumber = message.data.modeNumber;
+        await importNumberVariables(tokens, collectionName, modeNumber);
+
+        figma.notify("Number variables imported successfully.");
+      } catch (error) {
+        const message =
+          error instanceof Error ? error.message : "Unknown error";
+
+        figma.notify(`Failed to import number variables: ${message}`);
         console.log(message);
       }
 
